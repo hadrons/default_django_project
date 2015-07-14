@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	{% block title %}
+        <title>HTML Title</title>
+	{% endblock %}
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+	{% block seo %}
+		<!-- metatags  -->
+	{% endblock %}
+	
+	<link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+	{% block extra_css %}{% endblock %}
+
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	{% block extra_js %}{% endblock %}
+
+</head>
+<body>
+	{% block header %}
+		{% include 'homesite/includes/header.html' %}
+	{% endblock %}
+	
+	<main id="Content">
+		{% block content %}
+
+		{% endblock %}
+	</main><!-- #Content -->
+
+
+	{% block footer %}
+		{% include 'homesite/includes/footer.html' %}
+	{% endblock %}
+	
+</body>
+</html>

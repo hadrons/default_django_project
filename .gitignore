@@ -1,1 +1,16 @@
+.DS_Store
 *.pyc
+homesite/static/lib/
+media/
+bin
+build
+include
+lib
+local
+man
+share
+*.pyc
+*.db
+*.sqlite3
+**/migrations
+node_modules/
