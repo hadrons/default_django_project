@@ -9,21 +9,19 @@ gulp.task('default', ['sass', 'watch']);
 var root = 'homesite/static';
 
 gulp.task('sass', function (done) {
-  gulp.src([
-      root+'/sass/comum.sass'
-    ])
-    .pipe(sass({indentedSyntax: true}))
-    .pipe(gulp.dest(root+'/css/'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(rename({
-      extname: '.min.css'
-    }))
-    .pipe(gulp.dest(root+'/css/'))
-    .on('end', done);
+    gulp.src(root+'/sass/comum.sass')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest(root+'/css/'))
+        .pipe(minifyCss({
+            keepSpecialComments: 0
+        }))
+        .pipe(rename({
+            extname: '.min.css'
+        }))
+        .pipe(gulp.dest(root+'/css/'))
+        .on('end', done);
 });
 
 gulp.task('watch', function () {
-  gulp.watch([root+'/sass/**/*.sass'], ['sass']);
+    gulp.watch([root+'/sass/**/*.sass'], ['sass']);
 });
