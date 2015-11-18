@@ -16,3 +16,6 @@ user:
 
 shell:
 	python manage.py shell
+
+tests: clean
+	python manage.py test --settings=default.settings_tests

@@ -19,5 +19,6 @@ from homesite.views import HomeSiteView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),    
-    url(r'^$', include('homesite.urls'))
+    url(r'^$', include('homesite.urls')),
+    url(r'^v1/', include('api.urls')),
 ]
