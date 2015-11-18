@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),    
     url(r'^$', include('homesite.urls')),
     url(r'^v1/', include('api.urls')),
+    url(r'^categories/', include('categories.urls', namespace='categories')),
 ]
