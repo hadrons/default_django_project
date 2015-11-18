@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+	<h1 class="title">Categoria Nova</h1>
+
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}		
+		<input type="submit" class="btn blue" value="Salvar">
+	</form>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="title">Categorias</h1>
+
+<div class="tools"><a class="right" href="{% url 'categories:category_create' %}">Categoria Nova</a></div>
+<div class="clearfix"></div>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Editar</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for category in categories %}
+				<tr>
+					<td>{{ category.id }}</td>
+					<td>{{ category.name }}</td>
+					<td>{{ category.description }}</td>
+					<td><a href="{% url 'categories:category_update' category.pk %}">Editar</a></td>
+				</td>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
