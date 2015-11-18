@@ -12,5 +12,4 @@ share
 *.pyc
 *.db
 *.sqlite3
-**/migrations
 node_modules/
