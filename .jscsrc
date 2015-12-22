@@ -1,0 +1,6 @@
+{
+    "requireCommaBeforeLineBreak": false,
+    "requireCurlyBraces": true,
+    "preset": "crockford",
+    "disallowSpacesInFunctionDeclaration": false
+}

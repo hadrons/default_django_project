@@ -1,0 +1,91 @@
+=icon($imageName, $width, $height)
+    background: 
+        image: url(../images/#{$imageName})
+        repeat: no-repeat
+        position: center center
+    width: $width
+    height: $height
+    display: inline-block
+    text-indent: -99999em
+    overflow: hidden
+
+=clearfix
+    &:after
+        display: table
+        content: ''
+        clear: both
+
+=center-margin-y($wrapper-height, $element-height)
+    margin: (($wrapper-height - $element-height) / 2) 0
+
+=font-face($family, $path, $svg, $weight, $style)
+    @font-face
+        font-family: $family
+        src: url('#{$path}.eot')
+        src: url('#{$path}.eot?#iefix') format('embedded-opentype'), url('#{$path}.woff') format('woff'), url('#{$path}.ttf') format('truetype'), url('#{$path}.svg##{$svg}') format('svg')
+        font-weight: $weight
+        font-style: $style
+
+@mixin blur($blur, $blurie)
+    -webkit-filter: blur($blur)
+    -moz-filter: blur($blur)
+    -ms-filter: blur($blur)
+    -o-filter: blur($blur)
+    filter: blur($blur) 
+    filter: url("data:image/svg+xml;utf8,<svg height='0' xmlns='http://www.w3.org/2000/svg'><filter id='svgBlur' x='-5%' y='-5%' width='110%' height='110%'><feGaussianBlur in='SourceGraphic' stdDeviation='5'/></filter></svg>#svgBlur")
+    filter: progid:DXImageTransform.Microsoft.Blur(pixelradius=#{$blurie})\9
+    -ms-filter: progid:DXImageTransform.Microsoft.Blur(pixelradius='#{$blurie}')\9 !important
+    opacity: 1\9 !important
+    
+
+@mixin text-shadow($h, $v,  $blur, $cor)
+    -webkit-text-shadow: $h $v $blur $cor
+    text-shadow: $h $v $blur $cor
+
+@mixin border-radius($radius)
+    -webkit-border-radius: $radius
+    -moz-border-radius: $radius
+    -ms-border-radius: $radius
+    -o-border-radius: $radius
+    border-radius: $radius
+
+@mixin border-radius-all($topleft, $topright, $bottomright, $bottomleft)
+    -webkit-border-top-left-radius: $topleft
+    -webkit-border-top-right-radius: $topright
+    -webkit-border-bottom-right-radius: $bottomright
+    -webkit-border-bottom-left-radius: $bottomleft
+    -moz-border-radius-topleft: $topleft
+    -moz-border-radius-topright: $topright
+    -moz-border-radius-bottomright: $bottomright
+    -moz-border-radius-bottomleft: $bottomleft
+    border-top-left-radius: $topleft
+    border-top-right-radius: $topright
+    border-bottom-right-radius: $bottomright
+    border-bottom-left-radius: $bottomleft
+
+
+@mixin box-shadow($h, $v,  $blur, $spread, $cor)
+    -webkit-box-shadow: $h $v $blur $spread $cor
+    box-shadow: $h $v $blur $spread $cor
+
+@mixin linear-gradient($fromColor, $toColor)
+    background-color: $toColor
+    background-image: -webkit-gradient(linear, left top, left bottom, from(0%, $fromColor), to(100%, $toColor))
+    background-image: -webkit-linear-gradient(top, $fromColor 0%, $toColor 100%)
+    background-image: -moz-linear-gradient(top, $fromColor 0%, $toColor 100%)
+    background-image: -ms-linear-gradient(top, $fromColor 0%, $toColor 100%)
+    background-image: -o-linear-gradient(top, $fromColor 0%, $toColor 100%)
+    background-image: linear-gradient(top, $fromColor 0%, $toColor 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}')
+
+@mixin transition($transition-property, $transition-time, $method)
+    -webkit-transition: $transition-property $transition-time $method
+    -moz-transition: $transition-property $transition-time $method
+    -ms-transition: $transition-property $transition-time $method
+    -o-transition: $transition-property $transition-time $method
+    transition: $transition-property $transition-time $method
+
+@mixin opacity($opacity, $opacityIE)
+    opacity: $opacity
+    -moz-opacity:  $opacity
+    filter: alpha(opacity=$opacityIE)
