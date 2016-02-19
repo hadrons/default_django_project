@@ -1,13 +1,12 @@
 #coding: utf-8
 from django.conf.urls import include, url
-from . import DefaultRouter
 
 from rest_framework.authtoken import views
 from people.views import PersonViewSet, PersonUpdateView, ObtainAuthToken
 
-router = DefaultRouter()
 
-router.register(r'people', PersonViewSet.as_view(), base_name='people')
+
+# router.register(r'people', PersonViewSet.as_view(), base_name='people')
 
 helper_patterns = [
 
@@ -19,4 +18,4 @@ helper_patterns = [
 ]
 
 urlpatterns = helper_patterns
-urlpatterns.extend(router.urls)
+#urlpatterns.extend(router.urls)
