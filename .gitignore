@@ -5,7 +5,7 @@ media/
 bin
 build
 include
-lib
+static/lib
 local
 man
 share

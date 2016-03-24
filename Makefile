@@ -19,3 +19,21 @@ shell:
 
 tests: clean
 	python manage.py test --settings=default.settings_tests
+
+
+initial_deploy:
+	cap production setup:install_requirements_server
+	cap production deploy
+	cap production setup:create_folders
+	cap production setup:install_requirements
+	cap production setup:conf_files
+	cap production setup:migrations
+	cap production setup:collect_static
+	cap production setup:restart_app
+	
+
+deploy:
+	cap production deploy
+	cap production setup:migrations
+	cap production setup:collect_static
+	cap production setup:restart_app
