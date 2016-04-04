@@ -5,6 +5,7 @@ namespace :setup do
       on roles(:app) do
         execute "echo '==================== Install dependencies ===================='"
 
+        execute "curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -"
         execute "sudo apt-get update -y"
         execute "sudo apt-get install build-essential -y"
         execute "sudo apt-get -y install python-pip python-dev python2.7-dev python-virtualenv postgresql postgresql-contrib libpq-dev nginx supervisor git ssh libjpeg-dev zlib1g-dev libpng12-dev curl"
@@ -12,14 +13,10 @@ namespace :setup do
         execute "sudo apt-get install nginx -y"
         execute "sudo locale-gen"
 
-        execute "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash"
-        execute "source ~/.bashrc && sudo update-locale LC_ALL='en_US.UTF-8'"
-        execute "source ~/.nvm/nvm.sh && nvm install 0.12"
-        execute "nvm alias default stable"
-        execute "npm install"
+        execute "sudo apt-get install -y nodejs"
+        execute "npm install -g bower sass gulp"
       end
     end
-
 
     task :create_folders do
       on roles(:app) do
@@ -73,7 +70,7 @@ namespace :setup do
     task :collect_static do
       on roles(:app) do
         execute "echo '==================== Collectstatic ===================='"
-        execute "source ~/.nvm/nvm.sh && cd #{fetch(:deploy_to)}/current/ && npm install && bower install --allow-root && gulp build"
+        execute "cd #{fetch(:deploy_to)}/current/ && npm install && bower install --allow-root && gulp build"
         execute "#{fetch(:deploy_to)}/bin/python #{fetch(:deploy_to)}/current/manage.py collectstatic -v0 --noinput --settings=#{fetch(:application)}.settings_production"
       end
     end
