@@ -20,7 +20,9 @@ shell:
 tests: clean
 	python manage.py test --settings=default.settings_tests
 
-
+run_celery:
+	celery worker -l info --beat --app=golegal.celery:app
+	
 initial_deploy:
 	cap production setup:install_requirements_server
 	cap production deploy

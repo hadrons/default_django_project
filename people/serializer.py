@@ -5,7 +5,6 @@ from .models import Person
 
 
 class PersonSerializer(serializers.ModelSerializer):
-    email = serializers.CharField(required=False)
 
     class Meta:
         model = Person

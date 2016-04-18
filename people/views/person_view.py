@@ -22,7 +22,7 @@ class PersonViewSet(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response({"message":"403 Forbidden"}, status=status.HTTP_409_CONFLICT)
+            return Response({"message":"409 Conflict"}, status=status.HTTP_409_CONFLICT)
 
 class PersonUpdateView(APIView):
     
