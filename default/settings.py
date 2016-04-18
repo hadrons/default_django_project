@@ -132,3 +132,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 
 AUTH_USER_MODEL = 'people.Person'
+
+
+BROKER_URL = 'amqp://myuser:mypassword@localhost:5672/myhost'
+
+SITE_ID = 1

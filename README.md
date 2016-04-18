@@ -35,6 +35,9 @@
     - sudo rabbitmqctl add_vhost myvhost
     - sudo rabbitmqctl set_permissions -p myvhost myuser ".*" ".*" ".*"
 
+4. Add broker url in settings
+    - BROKER_URL = 'amqp://myuser:mypassword@localhost:5672/myvhost'
+
 3. Install celery
     - pip install celery
 
@@ -47,6 +50,6 @@
 
 # Celery Production
 
-6. Create symlink to ../default/config/deploy_config/default_celery_supervisor.conf >> /etc/supervisor/conf.d/default_celery_supervisor.conf
+6. Create symlink: ../default/config/deploy_config/default_celery_supervisor.conf >> /etc/supervisor/conf.d/default_celery_supervisor.conf
 
 7. Restart supervisorctl
