@@ -9,6 +9,7 @@ namespace :setup do
         execute "sudo apt-get update -y"
         execute "sudo apt-get install build-essential -y"
         execute "sudo apt-get -y install python-pip python-dev python2.7-dev python-virtualenv postgresql postgresql-contrib libpq-dev nginx supervisor git ssh libjpeg-dev zlib1g-dev libpng12-dev curl"
+        execute "sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk"
         execute "sudo apt-get install supervisor -y"
         execute "sudo apt-get install nginx -y"
         execute "sudo locale-gen"
@@ -72,6 +73,15 @@ namespace :setup do
         execute "echo '==================== Collectstatic ===================='"
         execute "cd #{fetch(:deploy_to)}/current/ && npm install && bower install --allow-root && gulp build"
         execute "#{fetch(:deploy_to)}/bin/python #{fetch(:deploy_to)}/current/manage.py collectstatic -v0 --noinput --settings=#{fetch(:application)}.settings_production"
+      end
+    end
+
+    desc 'Notify service of deployment'
+    task :notify do
+      run_locally do
+        with rails_env: :development do
+          rake 'service:notify'
+        end
       end
     end
 
