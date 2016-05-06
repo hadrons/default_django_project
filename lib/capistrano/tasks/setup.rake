@@ -9,7 +9,7 @@ namespace :setup do
         execute "sudo apt-get update -y"
         execute "sudo apt-get install build-essential -y"
         execute "sudo apt-get -y install python-pip python-dev python2.7-dev python-virtualenv postgresql postgresql-contrib libpq-dev nginx supervisor git ssh libjpeg-dev zlib1g-dev libpng12-dev curl"
-        execute "sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk"
+        execute "sudo apt-get -y install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk"
         execute "sudo apt-get install supervisor -y"
         execute "sudo apt-get install nginx -y"
         execute "sudo locale-gen"
