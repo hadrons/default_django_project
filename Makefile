@@ -24,11 +24,11 @@ run_celery:
 	celery worker -l info --beat --app=golegal.celery:app
 	
 initial_deploy:
-	cap production setup:install_requirements_server
+	#cap production setup:install_requirements_server
 	cap production deploy
-	cap production setup:create_folders
-	cap production setup:install_requirements
-	cap production setup:conf_files
+	#cap production setup:create_folders
+	#cap production setup:install_requirements
+	#cap production setup:conf_files
 	cap production setup:migrations
 	cap production setup:collect_static
 	cap production setup:restart_app
