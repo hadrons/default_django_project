@@ -27,8 +27,8 @@ namespace :setup do
         execute "touch #{fetch(:deploy_to)}/shared/log/nginx-access.log"
         execute "touch #{fetch(:deploy_to)}/shared/log/nginx-error.log"
         execute "touch #{fetch(:deploy_to)}/shared/log/gunicorn_supervisor.log"
-        execute "mkdir /home/webapps/media"
-        execute "mkdir /home/webapps/static_collected"
+        execute "mkdir #{fetch(:deploy_to)}/media"
+        execute "mkdir #{fetch(:deploy_to)}/static_collected"
       end
     end
 

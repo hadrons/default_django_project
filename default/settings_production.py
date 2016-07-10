@@ -15,5 +15,5 @@ ALLOWED_HOSTS = ['*']
 #     }
 # }
 
-MEDIA_ROOT = '/home/webapps/media'
-STATIC_ROOT = '/home/webapps/static_collected'
+MEDIA_ROOT = '/home/webapps/default/media'
+STATIC_ROOT = '/home/webapps/default/static_collected'
