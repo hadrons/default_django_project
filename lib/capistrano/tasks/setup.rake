@@ -71,7 +71,7 @@ namespace :setup do
     task :collect_static do
       on roles(:app) do
         execute "echo '==================== Collectstatic ===================='"
-        execute "cd #{fetch(:deploy_to)}/current/ && npm install && bower install --allow-root && gulp build"
+        #execute "cd #{fetch(:deploy_to)}/current/ && npm install && bower install --allow-root && gulp build"
         execute "#{fetch(:deploy_to)}/bin/python #{fetch(:deploy_to)}/current/manage.py collectstatic -v0 --noinput --settings=#{fetch(:application)}.settings_production"
       end
     end
