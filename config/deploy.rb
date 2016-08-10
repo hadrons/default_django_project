@@ -1,6 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.4.1'
-set :application, 'default'
+set :application, 'NAME_PROJECT'
 set :repo_url, 'git@git.hadrons.io:project-defaults/django.git'
 set :branch, "master"
 #set :repository,  "."
@@ -8,7 +8,7 @@ set :branch, "master"
 set :user, "root"
 set :use_sudo, true
 
-set :deploy_to, "/home/webapps/default"
+set :deploy_to, "/home/webapps/NAME_PROJECT"
 #set :deploy_via, :copy
 
 set :copy_dir, "/tmp"
