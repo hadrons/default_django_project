@@ -9,7 +9,7 @@ namespace :setup do
         execute "sudo apt-get update -y"
         execute "sudo apt-get install build-essential -y"
         execute "sudo apt-get -y install python-pip python-dev python2.7-dev python-virtualenv postgresql postgresql-contrib libpq-dev nginx supervisor git ssh libjpeg-dev zlib1g-dev libpng12-dev curl"
-        execute "sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk"
+        execute "sudo apt-get -y install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk"
         execute "sudo apt-get install supervisor -y"
         execute "sudo apt-get install nginx -y"
         execute "sudo locale-gen"
@@ -27,8 +27,8 @@ namespace :setup do
         execute "touch #{fetch(:deploy_to)}/shared/log/nginx-access.log"
         execute "touch #{fetch(:deploy_to)}/shared/log/nginx-error.log"
         execute "touch #{fetch(:deploy_to)}/shared/log/gunicorn_supervisor.log"
-        execute "mkdir /home/webapps/media"
-        execute "mkdir /home/webapps/static_collected"
+        execute "mkdir #{fetch(:deploy_to)}/media"
+        execute "mkdir #{fetch(:deploy_to)}/static_collected"
       end
     end
 
@@ -71,7 +71,7 @@ namespace :setup do
     task :collect_static do
       on roles(:app) do
         execute "echo '==================== Collectstatic ===================='"
-        execute "cd #{fetch(:deploy_to)}/current/ && npm install && bower install --allow-root && gulp build"
+        #execute "cd #{fetch(:deploy_to)}/current/ && npm install && bower install --allow-root && gulp build"
         execute "#{fetch(:deploy_to)}/bin/python #{fetch(:deploy_to)}/current/manage.py collectstatic -v0 --noinput --settings=#{fetch(:application)}.settings_production"
       end
     end
