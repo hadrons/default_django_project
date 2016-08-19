@@ -1,9 +1,9 @@
 #coding: utf-8
 import os
 
-REPO_URL = 'git@bitbucket.org:hadrons/goldenbattle.git'
-NAME_PROJECT = 'goldenbattle'
-IP_SERVER = '54.152.152.187'
+REPO_URL = 'git@bitbucket.org:hadrons/name_project.git'
+NAME_PROJECT = 'name_project'
+IP_SERVER = '111.111.111.111'
 
 
 def rename_files():
